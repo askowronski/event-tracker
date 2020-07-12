@@ -13,12 +13,19 @@ public class Event {
     @Id
     private String id;
     private String type;
-    private Date date;
     private Long duration;
-
-    public Event(String type, Date date, Long duration) {
-        this.type = type;
-        this.date = date;
-        this.duration = duration;
-    }
+    private String name;
+    private String notes;
+    private Date startTime;
+    
+	public Event(String id, String type, Date date, Long duration, String name, String notes, Date startTime) {
+		super();
+		this.id = id;
+		this.type = type;
+		this.duration = duration;
+		this.name = name;
+		this.notes = notes;
+		this.startTime = startTime;
+	} 
+	
 }
