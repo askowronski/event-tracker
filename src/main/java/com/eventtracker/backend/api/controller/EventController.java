@@ -5,6 +5,7 @@ import com.eventtracker.backend.repository.EventRepository;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,11 +18,13 @@ public class EventController {
 	public EventRepository eventRepository;
 
 	@GetMapping("/events")
+	@CrossOrigin()
 	public List<Event> getAllEvents() {
 		return eventRepository.findAll();
 	}
 
 	@PostMapping("/event")
+	@CrossOrigin()
 	public Event createEvent(@RequestBody Event event) {
 		return eventRepository.insert(event);
 	}

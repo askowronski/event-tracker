@@ -18,14 +18,5 @@ public class Event {
     private String notes;
     private Date startTime;
     
-	public Event(String id, String type, Date date, Long duration, String name, String notes, Date startTime) {
-		super();
-		this.id = id;
-		this.type = type;
-		this.duration = duration;
-		this.name = name;
-		this.notes = notes;
-		this.startTime = startTime;
-	} 
 	
 }
