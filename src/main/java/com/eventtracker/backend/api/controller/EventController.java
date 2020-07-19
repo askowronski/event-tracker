@@ -50,17 +50,18 @@ public class EventController {
 	    List<EventType> eventTypeList = this.getEventTypes(events);
 
 	    events.stream().forEach(e -> {
+	        EventType type = eventTypeList.stream().filter(et -> et.getKey().equals(e.getType())).findFirst().get();
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             String dateString = df.format(e.getStartTime());
             if (dateDataMap.get(dateString) == null) {
                 CalendarDateData dateData = new CalendarDateData();
-                HashSet<String> dots = new HashSet<>();
-                dots.add(e.getType());
+                HashSet<EventType> dots = new HashSet<>();
+                dots.add(type);
                 dateData.setDots(dots);
                 dateData.setSelected(true);
                 dateDataMap.put(dateString, dateData);
             } else {
-                dateDataMap.get(dateString).getDots().add(e.getType());
+                dateDataMap.get(dateString).getDots().add(type);
             }
         });
 

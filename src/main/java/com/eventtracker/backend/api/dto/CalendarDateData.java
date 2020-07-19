@@ -5,22 +5,22 @@ import java.util.List;
 
 public class CalendarDateData {
 
-    public HashSet<String> dots;
+    public HashSet<EventType> dots;
     public boolean selected;
 
     public CalendarDateData() {
     }
 
-    public CalendarDateData(HashSet<String> dots, boolean selected) {
+    public CalendarDateData(HashSet<EventType> dots, boolean selected) {
         this.dots = dots;
         this.selected = selected;
     }
 
-    public HashSet<String> getDots() {
+    public HashSet<EventType> getDots() {
         return dots;
     }
 
-    public void setDots(HashSet<String> dots) {
+    public void setDots(HashSet<EventType> dots) {
         this.dots = dots;
     }
 
