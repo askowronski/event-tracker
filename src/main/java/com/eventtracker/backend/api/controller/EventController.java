@@ -50,7 +50,7 @@ public class EventController {
 	    List<EventType> eventTypeList = this.getEventTypes(events);
 
 	    events.stream().forEach(e -> {
-            DateFormat df = new SimpleDateFormat("yyyy-mm-dd");
+            DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
             String dateString = df.format(e.getStartTime());
             if (dateDataMap.get(dateString) == null) {
                 CalendarDateData dateData = new CalendarDateData();
