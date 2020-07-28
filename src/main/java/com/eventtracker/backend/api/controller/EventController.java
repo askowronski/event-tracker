@@ -14,6 +14,7 @@ import java.util.List;
 
 import java.util.Map;
 import java.util.stream.Collectors;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,7 +42,7 @@ public class EventController {
 
 	@PostMapping("/event")
 	@CrossOrigin()
-	public Event createEvent(@RequestBody Event event) {
+	public Event createEvent(@Valid @RequestBody Event event) {
 		return eventRepository.insert(event);
 	}
 
