@@ -23,6 +23,8 @@ public class Event {
     private String notes;
     @NotNull(message = "Start Time cannot be null")
     private Date startTime;
+    @NotNull(message = "End Time cannot be null")
+    private Date endTime;
     
 	
 }
