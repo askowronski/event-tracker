@@ -8,7 +8,7 @@ import java.util.Map;
 public class CalendarDto {
 
 
-    public final static String[] colors = {"red", "blue", "green", "purple"};
+    public final static String[] colors = {"red", "blue", "green", "purple", "yellow", "black", "teal", "orange"};
 
     public List<EventType> eventTypeList;
     public Map<String, CalendarDateData> dateMap;
