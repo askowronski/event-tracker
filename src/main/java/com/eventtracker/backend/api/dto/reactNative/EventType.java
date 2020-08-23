@@ -1,4 +1,4 @@
-package com.eventtracker.backend.api.dto;
+package com.eventtracker.backend.api.dto.reactNative;
 
 public class EventType {
 

@@ -25,6 +25,11 @@ public class Event {
     private Date startTime;
     @NotNull(message = "End Time cannot be null")
     private Date endTime;
+    private boolean multiPeriod;
+
+    public boolean isOnGoing() {
+        return endTime == null && duration == null && isMultiPeriod();
+    }
     
 	
 }
