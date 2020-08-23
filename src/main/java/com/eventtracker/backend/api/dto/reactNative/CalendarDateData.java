@@ -1,7 +1,6 @@
-package com.eventtracker.backend.api.dto;
+package com.eventtracker.backend.api.dto.reactNative;
 
 import java.util.HashSet;
-import java.util.List;
 
 public class CalendarDateData {
 

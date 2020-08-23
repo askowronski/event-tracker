@@ -1,7 +1,6 @@
-package com.eventtracker.backend.api.dto;
+package com.eventtracker.backend.api.dto.reactNative;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 

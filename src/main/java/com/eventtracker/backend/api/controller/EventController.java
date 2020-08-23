@@ -1,8 +1,8 @@
 package com.eventtracker.backend.api.controller;
 
-import com.eventtracker.backend.api.dto.CalendarDateData;
-import com.eventtracker.backend.api.dto.CalendarDto;
-import com.eventtracker.backend.api.dto.EventType;
+import com.eventtracker.backend.api.dto.reactNative.CalendarDateData;
+import com.eventtracker.backend.api.dto.reactNative.CalendarDto;
+import com.eventtracker.backend.api.dto.reactNative.EventType;
 import com.eventtracker.backend.entities.Event;
 import com.eventtracker.backend.repository.EventRepository;
 import java.text.DateFormat;
