@@ -26,7 +26,7 @@ public class Event {
     private boolean multiPeriod;
 
     public boolean isOnGoing() {
-        return endTime == null && duration == null && isMultiPeriod();
+        return endTime == null && duration == null;
     }
     
 	
