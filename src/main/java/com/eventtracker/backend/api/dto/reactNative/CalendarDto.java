@@ -1,14 +1,13 @@
-package com.eventtracker.backend.api.dto;
+package com.eventtracker.backend.api.dto.reactNative;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class CalendarDto {
 
 
-    public final static String[] colors = {"red", "blue", "green", "purple"};
+    public final static String[] colors = {"red", "blue", "green", "purple", "yellow", "black", "teal", "orange"};
 
     public List<EventType> eventTypeList;
     public Map<String, CalendarDateData> dateMap;

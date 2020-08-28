@@ -1,13 +1,15 @@
 package com.eventtracker.backend.api.controller;
 
-import com.eventtracker.backend.api.dto.CalendarDateData;
-import com.eventtracker.backend.api.dto.CalendarDto;
-import com.eventtracker.backend.api.dto.EventType;
+import com.eventtracker.backend.api.dto.reactNative.CalendarDateData;
+import com.eventtracker.backend.api.dto.reactNative.CalendarDto;
+import com.eventtracker.backend.api.dto.reactNative.EventType;
+import com.eventtracker.backend.api.dto.web.WebCalendarDto;
 import com.eventtracker.backend.entities.Event;
 import com.eventtracker.backend.repository.EventRepository;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -34,10 +36,16 @@ public class EventController {
 		return eventRepository.findAll();
 	}
 
-    @GetMapping("/events/calendarData")
+    @GetMapping("/events/calendarData/rn")
     @CrossOrigin()
-    public CalendarDto getAllEventsForCalendar() {
-        return this.convertEntitiesToDto(eventRepository.findAll());
+    public CalendarDto getAllEventsForCalendarRN() {
+        return this.convertEntitiesToDtoRN(eventRepository.findAll());
+    }
+
+    @GetMapping("/events/calendarData/web")
+    @CrossOrigin()
+    public List<WebCalendarDto> getAllEventsForCalendarWeb() {
+        return this.convertEntitiesToDtoWeb(eventRepository.findAll());
     }
 
 	@PostMapping("/event")
@@ -46,7 +54,7 @@ public class EventController {
 		return eventRepository.insert(event);
 	}
 
-	public CalendarDto convertEntitiesToDto(List<Event> events) {
+	public CalendarDto convertEntitiesToDtoRN(List<Event> events) {
 	    Map<String, CalendarDateData> dateDataMap = new HashMap();
 	    List<EventType> eventTypeList = this.getEventTypes(events);
 
@@ -67,6 +75,28 @@ public class EventController {
         });
 
 	    return new CalendarDto(eventTypeList, dateDataMap);
+    }
+
+    public List<WebCalendarDto> convertEntitiesToDtoWeb(List<Event> events) {
+	    List<WebCalendarDto> webDtos = new ArrayList<>();
+	    events.stream().forEach(e -> {
+	        WebCalendarDto webCalendarDto = new WebCalendarDto();
+	        webCalendarDto.setAllDay(false);
+	        webCalendarDto.setTitle(e.getType());
+	        webCalendarDto.setStart(e.getStartTime());
+
+	        if (e.getEndTime() == null && e.getDuration() != null) {
+                Date endTime = (Date) e.getStartTime().clone();
+                endTime.setTime(e.getStartTime().getTime() + e.getDuration()*1000);
+	            webCalendarDto.setEnd(endTime);
+            } else if (e.isOnGoing()){
+	            webCalendarDto.setEnd(new Date());
+            } else {
+                webCalendarDto.setEnd(e.getEndTime());
+            }
+	        webDtos.add(webCalendarDto);
+        });
+	    return webDtos;
     }
 
     public List<EventType> getEventTypes(List<Event> events) {
