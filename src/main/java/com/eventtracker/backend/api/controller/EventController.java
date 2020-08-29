@@ -19,7 +19,10 @@ import java.util.stream.Collectors;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,6 +56,20 @@ public class EventController {
 	public Event createEvent(@Valid @RequestBody Event event) {
 		return eventRepository.insert(event);
 	}
+
+    @PatchMapping("/event")
+    @CrossOrigin()
+    public Event editEvent(@Valid @RequestBody Event event) {
+
+        eventRepository.save(event);
+        return event;
+    }
+
+    @DeleteMapping("/event/{id}")
+    @CrossOrigin()
+    public void deleteEvent(@PathVariable String id) {
+         eventRepository.deleteById(id);
+    }
 
 	public CalendarDto convertEntitiesToDtoRN(List<Event> events) {
 	    Map<String, CalendarDateData> dateDataMap = new HashMap();
