@@ -5,6 +5,7 @@ import com.eventtracker.backend.api.dto.reactNative.CalendarDto;
 import com.eventtracker.backend.api.dto.reactNative.EventType;
 import com.eventtracker.backend.api.dto.web.WebCalendarDto;
 import com.eventtracker.backend.entities.Event;
+import com.eventtracker.backend.mongoTemplate.EventTemplate;
 import com.eventtracker.backend.repository.EventRepository;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -32,12 +33,20 @@ public class EventController {
 
 	@Autowired
 	public EventRepository eventRepository;
+	@Autowired
+    public EventTemplate eventTemplate;
 
 	@GetMapping("/events")
 	@CrossOrigin()
 	public List<Event> getAllEvents() {
 		return eventRepository.findAll();
 	}
+
+    @GetMapping("/eventTypes")
+    @CrossOrigin()
+    public List<String> getAllEventTypes() {
+        return eventTemplate.findDistinctEventTypes();
+    }
 
     @GetMapping("/events/calendarData/rn")
     @CrossOrigin()
