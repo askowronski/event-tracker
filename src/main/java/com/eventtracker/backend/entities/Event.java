@@ -24,10 +24,9 @@ public class Event {
     private Date startTime;
     private Date endTime;
     private boolean multiPeriod;
+    public EventTypeEntity eventType;
 
     public boolean isOnGoing() {
         return endTime == null && duration == null;
     }
-    
-	
 }
