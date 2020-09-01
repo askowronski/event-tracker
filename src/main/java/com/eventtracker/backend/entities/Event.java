@@ -25,6 +25,7 @@ public class Event {
     private Date endTime;
     private boolean multiPeriod;
     public EventTypeEntity eventType;
+    private double feel;
 
     public boolean isOnGoing() {
         return endTime == null && duration == null;
