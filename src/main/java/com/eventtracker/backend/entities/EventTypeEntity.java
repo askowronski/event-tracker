@@ -1,5 +1,6 @@
 package com.eventtracker.backend.entities;
 
+import java.util.ArrayList;
 import java.util.Map;
 import lombok.Data;
 
@@ -7,5 +8,5 @@ import lombok.Data;
 public class EventTypeEntity {
 
     public String type;
-    public Map<String,Object> fields;
+    public ArrayList<Map<String,Object>> fields;
 }
